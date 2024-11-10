@@ -9,9 +9,7 @@
     <img src="" />
     <h1>الخاص فيك هو ip عنوان ال</h1>
     <p id="ip-display">جارٍ الحصول على الـIP...</p>
-    <p id="visitor-count">
-      <span>&#128065;</span> : <span id="count">0</span>
-    </p>
+    <p id="visitor-count"><span>&#128065;</span> عدد الزوار: <span id="count">0</span></p>
 
     <script>
       // استدعاء API للحصول على عنوان IP
@@ -30,16 +28,16 @@
       // تحديث عدد الزوار
       function updateVisitorCount() {
         if (!sessionStorage.getItem("visited")) {
-          let count = localStorage.getItem("visitorCount");
+          let count = localStorage.getItem('visitorCount');
           if (!count) {
             count = 0;
           }
           count++;
-          localStorage.setItem("visitorCount", count);
-          document.getElementById("count").textContent = count;
+          localStorage.setItem('visitorCount', count);
+          document.getElementById('count').textContent = count;
           sessionStorage.setItem("visited", "true");
         } else {
-          document.getElementById("count").textContent = localStorage.getItem("visitorCount");
+          document.getElementById('count').textContent = localStorage.getItem('visitorCount');
         }
       }
 
