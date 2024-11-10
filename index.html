@@ -1,1 +1,108 @@
+<!DOCTYPE html>
+<html lang="ar">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>الحصول على IP المستخدم</title>
+  </head>
+  <body>
+    <img src="" />
+    <h1>الخاص فيك هو ip عنوان ال</h1>
+    <p id="ip-display">جارٍ الحصول على الـIP...</p>
 
+    <script>
+      // استدعاء API للحصول على عنوان IP
+      fetch("https://api.ipify.org?format=json")
+        .then((response) => response.json())
+        .then((data) => {
+          // عرض عنوان الـIP على الصفحة
+          document.getElementById("ip-display").textContent = data.ip;
+        })
+        .catch((error) => {
+          console.error("Error fetching IP:", error);
+          document.getElementById("ip-display").textContent =
+            "حدث خطأ في الحصول على الـIP";
+        });
+    </script>
+  </body>
+  <style>
+    img {
+      height: auto;
+      margin-bottom: 20px;
+      width: auto;
+      max-width: 100%;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      box-sizing: border-box;
+      transition: transform 0.3s;
+    }
+
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      color: #333;
+      margin: 0;
+      background-color: #f9f9f9;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      transition: background-color 0.3s;
+      background-color: #fff;
+    }
+    h1 {
+      margin-bottom: 10px;
+      margin-top: 0;
+      font-weight: bold;
+      color: #333;
+      transition: color 0.3s;
+      cursor: pointer;
+      user-select: none;
+    }
+    p {
+      font-size: 18px;
+      margin-bottom: 20px;
+      transition: color 0.3s;
+      user-select: none;
+      cursor: pointer;
+    }
+    #ip-display {
+      font-weight: bold;
+      color: #333;
+    }
+    @media (max-width: 600px) {
+      h1,
+      p {
+        font-size: 16px;
+      }
+      #ip-display {
+        font-size: 14px;
+      }
+      body {
+        text-align: left;
+      }
+      #ip-display {
+        margin-left: 10px;
+      }
+      h1,
+      p,
+      #ip-display {
+        margin-bottom: 5px;
+      }
+      #ip-display {
+        margin-left: 0;
+      }
+      p {
+        margin-bottom: 10px;
+      }
+    }
+    @media (max-width: 400px) {
+      h1,
+      p {
+        font-size: 14px;
+      }
+    }
+  </style>
+</html>
