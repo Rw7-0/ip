@@ -36,6 +36,9 @@
           localStorage.setItem('visitorCount', count);
           document.getElementById('count').textContent = count;
           sessionStorage.setItem("visited", "true");
+
+          // عرض رسالة ترحيب للزائر الجديد
+          alert("مرحبًا بك في موقعنا! أنت زائر جديد.");
         } else {
           document.getElementById('count').textContent = localStorage.getItem('visitorCount');
         }
