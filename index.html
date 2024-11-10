@@ -9,6 +9,9 @@
     <img src="" />
     <h1>الخاص فيك هو ip عنوان ال</h1>
     <p id="ip-display">جارٍ الحصول على الـIP...</p>
+    <p id="visitor-count">
+      <span>&#128065;</span> : <span id="count">0</span>
+    </p>
 
     <script>
       // استدعاء API للحصول على عنوان IP
@@ -23,6 +26,24 @@
           document.getElementById("ip-display").textContent =
             "حدث خطأ في الحصول على الـIP";
         });
+
+      // تحديث عدد الزوار
+      function updateVisitorCount() {
+        if (!sessionStorage.getItem("visited")) {
+          let count = localStorage.getItem("visitorCount");
+          if (!count) {
+            count = 0;
+          }
+          count++;
+          localStorage.setItem("visitorCount", count);
+          document.getElementById("count").textContent = count;
+          sessionStorage.setItem("visited", "true");
+        } else {
+          document.getElementById("count").textContent = localStorage.getItem("visitorCount");
+        }
+      }
+
+      updateVisitorCount();
     </script>
   </body>
   <style>
@@ -69,6 +90,11 @@
       cursor: pointer;
     }
     #ip-display {
+      font-weight: bold;
+      color: #333;
+    }
+    #visitor-count {
+      font-size: 18px;
       font-weight: bold;
       color: #333;
     }
